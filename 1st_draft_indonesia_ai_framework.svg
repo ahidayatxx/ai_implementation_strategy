@@ -1,0 +1,275 @@
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="redWhite" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#dc2626;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Filter for glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Drop shadow -->
+    <filter id="dropshadow">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <rect width="1200" height="800" fill="url(#bgGradient)"/>
+  
+  <!-- Indonesian flag colors accent -->
+  <rect x="0" y="0" width="1200" height="8" fill="#dc2626"/>
+  <rect x="0" y="792" width="1200" height="8" fill="#ffffff"/>
+  
+  <!-- Header -->
+  <text x="600" y="40" text-anchor="middle" fill="white" font-size="28" font-weight="bold" font-family="Arial">
+    Framework Implementasi Strategi AI Indonesia
+  </text>
+  <text x="600" y="65" text-anchor="middle" fill="#fbbf24" font-size="16" font-family="Arial">
+    SubPokja Strategi - Roadmap Kecerdasan Artifisial Nasional
+  </text>
+  
+  <!-- Central Vision Circle -->
+  <circle cx="600" cy="280" r="100" fill="#fbbf24" filter="url(#glow)" opacity="0.9"/>
+  <circle cx="600" cy="280" r="85" fill="none" stroke="white" stroke-width="2"/>
+  
+  <text x="600" y="270" text-anchor="middle" fill="#1e3a8a" font-size="14" font-weight="bold" font-family="Arial">
+    VISI TRANSFORMATIF
+  </text>
+  <text x="600" y="290" text-anchor="middle" fill="#1e3a8a" font-size="12" font-family="Arial">
+    Dari Monumen Statis
+  </text>
+  <text x="600" y="305" text-anchor="middle" fill="#1e3a8a" font-size="12" font-family="Arial">
+    ke Kompas Dinamis
+  </text>
+  
+  <!-- Seven Dimensions positioned around the center -->
+  
+  <!-- 1. Kebijakan & Regulasi (Top) -->
+  <g transform="translate(600, 120)">
+    <rect x="-70" y="-25" width="140" height="50" rx="25" fill="#10b981" filter="url(#dropshadow)"/>
+    <text x="0" y="-5" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Arial">
+      Kebijakan &amp;
+    </text>
+    <text x="0" y="10" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Arial">
+      Regulasi Adaptif
+    </text>
+  </g>
+  
+  <!-- 2. Etika & Tata Kelola (Top Right) -->
+  <g transform="translate(750, 180)">
+    <rect x="-65" y="-25" width="130" height="50" rx="25" fill="#8b5cf6" filter="url(#dropshadow)"/>
+    <text x="0" y="-5" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Arial">
+      Etika &amp; Tata Kelola
+    </text>
+    <text x="0" y="10" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Arial">
+      Terintegrasi
+    </text>
+  </g>
+  
+  <!-- 3. Riset & Inovasi (Right) -->
+  <g transform="translate(800, 280)">
+    <rect x="-60" y="-25" width="120" height="50" rx="25" fill="#f59e0b" filter="url(#dropshadow)"/>
+    <text x="0" y="-5" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Arial">
+      Riset &amp; Inovasi
+    </text>
+    <text x="0" y="10" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Arial">
+      Ekosistem
+    </text>
+  </g>
+  
+  <!-- 4. Data & Infrastruktur (Bottom Right) -->
+  <g transform="translate(750, 380)">
+    <rect x="-65" y="-25" width="130" height="50" rx="25" fill="#06b6d4" filter="url(#dropshadow)"/>
+    <text x="0" y="-5" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Arial">
+      Data &amp; Infrastruktur
+    </text>
+    <text x="0" y="10" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Arial">
+      Nasional
+    </text>
+  </g>
+  
+  <!-- 5. Pengembangan Talenta (Bottom) -->
+  <g transform="translate(600, 440)">
+    <rect x="-75" y="-25" width="150" height="50" rx="25" fill="#ef4444" filter="url(#dropshadow)"/>
+    <text x="0" y="-5" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Arial">
+      Pengembangan Talenta
+    </text>
+    <text x="0" y="10" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Arial">
+      Berkelanjutan
+    </text>
+  </g>
+  
+  <!-- 6. Pembiayaan & Investasi (Bottom Left) -->
+  <g transform="translate(450, 380)">
+    <rect x="-70" y="-25" width="140" height="50" rx="25" fill="#84cc16" filter="url(#dropshadow)"/>
+    <text x="0" y="-5" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Arial">
+      Pembiayaan &amp;
+    </text>
+    <text x="0" y="10" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Arial">
+      Investasi Strategis
+    </text>
+  </g>
+  
+  <!-- 7. Ekosistem & Kemitraan (Left) -->
+  <g transform="translate(400, 280)">
+    <rect x="-65" y="-25" width="130" height="50" rx="25" fill="#f97316" filter="url(#dropshadow)"/>
+    <text x="0" y="-5" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Arial">
+      Ekosistem &amp;
+    </text>
+    <text x="0" y="10" text-anchor="middle" fill="white" font-size="11" font-weight="bold" font-family="Arial">
+      Kemitraan Global
+    </text>
+  </g>
+  
+  <!-- Connection lines from center to dimensions -->
+  <line x1="600" y1="180" x2="600" y2="145" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="685" y1="225" x2="720" y2="205" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="700" y1="280" x2="740" y2="280" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="685" y1="335" x2="720" y2="355" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="600" y1="380" x2="600" y2="415" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="515" y1="335" x2="480" y2="355" stroke="white" stroke-width="2" opacity="0.7"/>
+  <line x1="500" y1="280" x2="465" y2="280" stroke="white" stroke-width="2" opacity="0.7"/>
+  
+  <!-- Implementation Phases Timeline -->
+  <g transform="translate(100, 520)">
+    <text x="0" y="0" fill="white" font-size="18" font-weight="bold" font-family="Arial">
+      Fase Implementasi (2026-2030+)
+    </text>
+    
+    <!-- Phase 1 -->
+    <rect x="0" y="20" width="300" height="60" rx="10" fill="#22c55e" opacity="0.8"/>
+    <text x="10" y="40" fill="white" font-size="12" font-weight="bold" font-family="Arial">
+      Fase 1: Foundation Building (2026-2027)
+    </text>
+    <text x="10" y="55" fill="white" font-size="10" font-family="Arial">
+      • Governance structure • Pilot projects
+    </text>
+    <text x="10" y="70" fill="white" font-size="10" font-family="Arial">
+      • Basic infrastructure • Regulatory foundation
+    </text>
+    
+    <!-- Phase 2 -->
+    <rect x="320" y="20" width="300" height="60" rx="10" fill="#3b82f6" opacity="0.8"/>
+    <text x="330" y="40" fill="white" font-size="12" font-weight="bold" font-family="Arial">
+      Fase 2: Scale-Up Implementation (2028-2029)
+    </text>
+    <text x="330" y="55" fill="white" font-size="10" font-family="Arial">
+      • National platform • Cross-sector integration
+    </text>
+    <text x="330" y="70" fill="white" font-size="10" font-family="Arial">
+      • Mass talent development • PPP activation
+    </text>
+    
+    <!-- Phase 3 -->
+    <rect x="640" y="20" width="300" height="60" rx="10" fill="#8b5cf6" opacity="0.8"/>
+    <text x="650" y="40" fill="white" font-size="12" font-weight="bold" font-family="Arial">
+      Fase 3: Optimization &amp; Leadership (2030+)
+    </text>
+    <text x="650" y="55" fill="white" font-size="10" font-family="Arial">
+      • AI-powered optimization • Global leadership
+    </text>
+    <text x="650" y="70" fill="white" font-size="10" font-family="Arial">
+      • Export solutions • Breakthrough research
+    </text>
+  </g>
+  
+  <!-- Key Principles -->
+  <g transform="translate(100, 620)">
+    <text x="0" y="0" fill="white" font-size="16" font-weight="bold" font-family="Arial">
+      Prinsip Kunci Framework:
+    </text>
+    
+    <circle cx="0" cy="25" r="3" fill="#fbbf24"/>
+    <text x="15" y="30" fill="white" font-size="11" font-family="Arial">
+      Strategic Foresight &amp; Adaptive Planning
+    </text>
+    
+    <circle cx="280" cy="25" r="3" fill="#fbbf24"/>
+    <text x="295" y="30" fill="white" font-size="11" font-family="Arial">
+      Implementation Bridge
+    </text>
+    
+    <circle cx="450" cy="25" r="3" fill="#fbbf24"/>
+    <text x="465" y="30" fill="white" font-size="11" font-family="Arial">
+      Sustainable Governance
+    </text>
+    
+    <circle cx="0" cy="50" r="3" fill="#fbbf24"/>
+    <text x="15" y="55" fill="white" font-size="11" font-family="Arial">
+      Impact Maximization
+    </text>
+    
+    <circle cx="280" cy="50" r="3" fill="#fbbf24"/>
+    <text x="295" y="55" fill="white" font-size="11" font-family="Arial">
+      Dynamic Integration
+    </text>
+  </g>
+  
+  <!-- Governance Structure -->
+  <g transform="translate(700, 620)">
+    <text x="0" y="0" fill="white" font-size="16" font-weight="bold" font-family="Arial">
+      Struktur Governance:
+    </text>
+    
+    <rect x="0" y="10" width="200" height="25" rx="5" fill="#dc2626" opacity="0.8"/>
+    <text x="5" y="27" fill="white" font-size="10" font-weight="bold" font-family="Arial">
+      Dewan Koordinasi Strategis AI Nasional
+    </text>
+    
+    <rect x="0" y="40" width="200" height="20" rx="5" fill="#059669" opacity="0.8"/>
+    <text x="5" y="53" fill="white" font-size="9" font-family="Arial">
+      Enhanced RACI Matrix K/L Coordination
+    </text>
+    
+    <rect x="220" y="10" width="180" height="25" rx="5" fill="#7c3aed" opacity="0.8"/>
+    <text x="225" y="27" fill="white" font-size="10" font-weight="bold" font-family="Arial">
+      Real-Time Monitoring Dashboard
+    </text>
+    
+    <rect x="220" y="40" width="180" height="20" rx="5" fill="#dc2626" opacity="0.8"/>
+    <text x="225" y="53" fill="white" font-size="9" font-family="Arial">
+      National AI Impact Index
+    </text>
+  </g>
+  
+  <!-- Success Metrics -->
+  <g transform="translate(100, 700)">
+    <text x="0" y="0" fill="white" font-size="14" font-weight="bold" font-family="Arial">
+      Target 2030: 20-50 Use Cases Implemented • 80% Data Interoperability • Global AI Leadership
+    </text>
+  </g>
+  
+  <!-- Indonesia AI branding -->
+  <g transform="translate(950, 750)">
+    <text x="0" y="0" fill="#fbbf24" font-size="12" font-weight="bold" font-family="Arial">
+      INDONESIA AI 2030
+    </text>
+    <text x="0" y="15" fill="white" font-size="8" font-family="Arial">
+      Roadmap Kecerdasan Artifisial
+    </text>
+  </g>
+  
+  <!-- Decorative AI Circuit Pattern -->
+  <g opacity="0.1">
+    <circle cx="150" cy="150" r="2" fill="white"/>
+    <circle cx="1050" cy="150" r="2" fill="white"/>
+    <circle cx="150" cy="650" r="2" fill="white"/>
+    <circle cx="1050" cy="650" r="2" fill="white"/>
+    <line x1="150" y1="150" x2="200" y2="150" stroke="white" stroke-width="1"/>
+    <line x1="1000" y1="150" x2="1050" y2="150" stroke="white" stroke-width="1"/>
+    <line x1="150" y1="650" x2="200" y2="650" stroke="white" stroke-width="1"/>
+    <line x1="1000" y1="650" x2="1050" y2="650" stroke="white" stroke-width="1"/>
+  </g>
+</svg>
