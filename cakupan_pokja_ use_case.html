@@ -3,436 +3,376 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metodologi Use Case AI Indonesia</title>
+    <title>Metodologi Use Case AI Indonesia - Peta Jalan 2025-2045</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Mobile-first custom styles */
         .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
         }
-        
         .glass-effect {
             background: rgba(255, 255, 255, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
         }
-        
-        /* Desktop enhancements */
-        @media (min-width: 768px) {
-            .glass-effect {
-                backdrop-filter: blur(10px);
-                background: rgba(255, 255, 255, 0.1);
-            }
-        }
-        
-        /* Process flow styles */
-        .process-step {
-            position: relative;
-            padding: 16px;
-            border-radius: 12px;
+        .card-hover {
             transition: all 0.3s ease;
         }
-        
-        .process-step:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
-        
-        .step-connector {
-            width: 2px;
-            height: 40px;
-            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
-            margin: 0 auto;
+        .phase-indicator {
+            background: linear-gradient(90deg, #3b82f6, #60a5fa);
         }
-        
-        @media (min-width: 768px) {
-            .step-connector {
-                width: 40px;
-                height: 2px;
-                background: linear-gradient(to right, #3b82f6, #8b5cf6);
-                margin: auto 0;
-            }
-        }
-        
-        /* Animation for engagement */
-        .fade-in {
-            animation: fadeIn 0.8s ease-in;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Stage indicators */
-        .stage-indicator {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin: 0 auto 12px;
-        }
-        
-        .stage-1 { background: linear-gradient(45deg, #3b82f6, #1d4ed8); }
-        .stage-2 { background: linear-gradient(45deg, #10b981, #059669); }
-        .stage-3 { background: linear-gradient(45deg, #f59e0b, #d97706); }
-        .stage-4 { background: linear-gradient(45deg, #8b5cf6, #7c3aed); }
-        .stage-5 { background: linear-gradient(45deg, #ef4444, #dc2626); }
-        
-        /* Methodology cards */
-        .methodology-card {
-            border-left: 4px solid;
-            transition: all 0.3s ease;
-        }
-        
-        .methodology-card:hover {
-            transform: translateX(4px);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        
-        /* Responsive grid adjustments */
         @media (max-width: 767px) {
-            .methodology-grid {
-                grid-template-columns: 1fr;
+            .glass-effect {
+                backdrop-filter: none;
+                background: rgba(255, 255, 255, 0.95);
             }
         }
     </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Header Section -->
-    <header class="gradient-bg text-white py-4 md:py-8">
-        <div class="container mx-auto px-3 md:px-6">
-            <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold text-center mb-2 md:mb-4">
-                Metodologi Use Case AI Indonesia
-            </h1>
-            <p class="text-sm md:text-base lg:text-lg text-center opacity-90">
-                Alur Logis Pengembangan Kecerdasan Artifisial Nasional 2025-2045
-            </p>
+<body class="min-h-screen gradient-bg">
+    <!-- Header -->
+    <header class="py-4 md:py-6">
+        <div class="max-w-6xl mx-auto px-3 md:px-6">
+            <div class="glass-effect rounded-lg md:rounded-xl p-4 md:p-6">
+                <div class="text-center">
+                    <h1 class="text-2xl md:text-4xl font-bold text-white mb-2 md:mb-3">
+                        Metodologi Use Case AI Indonesia
+                    </h1>
+                    <p class="text-sm md:text-lg text-blue-100">
+                        Framework Sistematis Peta Jalan Kecerdasan Artifisial 2025-2045
+                    </p>
+                    <div class="mt-3 md:mt-4 flex justify-center">
+                        <span class="inline-flex items-center px-3 md:px-4 py-1 md:py-2 rounded-full bg-white/20 text-white text-xs md:text-sm font-medium">
+                            📊 Berbasis RPJPN 2025-2045
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-3 md:px-6 py-4 md:py-8">
-        
-        <!-- Overview Flow -->
-        <section class="mb-6 md:mb-12 fade-in">
-            <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
-                <h2 class="text-lg md:text-2xl font-bold mb-4 md:mb-6 text-gray-800 text-center">
-                    🔄 Alur Metodologi End-to-End
-                </h2>
-                <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
-                    <div class="text-center">
-                        <div class="stage-indicator stage-1 text-white">1</div>
-                        <h3 class="font-semibold text-xs md:text-sm text-blue-800">Strategic Foundation</h3>
+    <main class="max-w-6xl mx-auto px-3 md:px-6 pb-6 md:pb-12">
+        <!-- Overview Section -->
+        <section class="mb-6 md:mb-8">
+            <div class="glass-effect rounded-lg md:rounded-xl p-4 md:p-6 card-hover">
+                <h2 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">🎯 Peran Kelompok Kerja Use Case</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
+                    <div class="bg-white/10 rounded-lg p-3 md:p-4">
+                        <h3 class="font-semibold text-white mb-2">Fungsi Utama</h3>
+                        <ul class="text-blue-100 text-sm space-y-1">
+                            <li>• Identifikasi dan kurasi use case AI</li>
+                            <li>• Evaluasi dampak strategis pembangunan</li>
+                            <li>• Fasilitasi kolaborasi multipihak</li>
+                            <li>• Validasi kesiapan teknologi dan data</li>
+                        </ul>
                     </div>
-                    <div class="step-connector"></div>
-                    
-                    <div class="text-center">
-                        <div class="stage-indicator stage-2 text-white">2</div>
-                        <h3 class="font-semibold text-xs md:text-sm text-green-800">Assessment & Evaluation</h3>
-                    </div>
-                    <div class="step-connector"></div>
-                    
-                    <div class="text-center">
-                        <div class="stage-indicator stage-3 text-white">3</div>
-                        <h3 class="font-semibold text-xs md:text-sm text-orange-800">Validation & Risk</h3>
-                    </div>
-                    <div class="step-connector"></div>
-                    
-                    <div class="text-center">
-                        <div class="stage-indicator stage-4 text-white">4</div>
-                        <h3 class="font-semibold text-xs md:text-sm text-purple-800">Implementation</h3>
-                    </div>
-                    <div class="step-connector"></div>
-                    
-                    <div class="text-center">
-                        <div class="stage-indicator stage-5 text-white">5</div>
-                        <h3 class="font-semibold text-xs md:text-sm text-red-800">Monitoring</h3>
+                    <div class="bg-white/10 rounded-lg p-3 md:p-4">
+                        <h3 class="font-semibold text-white mb-2">Target Outcome</h3>
+                        <ul class="text-blue-100 text-sm space-y-1">
+                            <li>• Matriks evaluasi dan skoring nasional</li>
+                            <li>• Peta jalan pengembangan AI per sektor</li>
+                            <li>• Dokumentasi praktik terbaik</li>
+                            <li>• Replikasi dan skalabilitas solusi</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Stage 1: Strategic Foundation -->
-        <section class="mb-6 md:mb-12 fade-in">
-            <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
-                <div class="flex items-center mb-4 md:mb-6">
-                    <div class="stage-indicator stage-1 text-white mr-3">1</div>
-                    <h2 class="text-lg md:text-2xl font-bold text-gray-800">
-                        Strategic Foundation - Perencanaan & Framework
-                    </h2>
-                </div>
-                
-                <div class="methodology-grid grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
-                    <div class="methodology-card bg-blue-50 p-3 md:p-4 rounded-lg border-blue-500">
-                        <h3 class="font-semibold text-blue-800 text-sm md:text-base mb-2">📊 Strategic Roadmapping</h3>
-                        <p class="text-xs md:text-sm text-blue-600 mb-2">4-fase implementation: Foundation → Scale-Up → Optimization → Excellence</p>
-                        <div class="text-xs text-blue-500">
-                            <div>• Technology-push & market-pull integration</div>
-                            <div>• Multi-stakeholder transformation framework</div>
+        <!-- Risk Management Framework -->
+        <section class="mb-6 md:mb-8">
+            <div class="glass-effect rounded-lg md:rounded-xl p-4 md:p-6 card-hover">
+                <h2 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">⚠️ Framework Manajemen Risiko</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-4">
+                    <div class="bg-red-500/20 rounded-lg p-3 md:p-4 border border-red-300/30">
+                        <h3 class="font-semibold text-white mb-2">Klaster Operasional</h3>
+                        <div class="text-red-100 text-sm space-y-1">
+                            <p><strong>Risiko:</strong> Seleksi, validasi, kurasi use case</p>
+                            <p><strong>Dampak:</strong> Kegagalan implementasi teknis</p>
+                            <p><strong>Mitigasi:</strong> Standardisasi + audit proaktif</p>
                         </div>
                     </div>
-                    
-                    <div class="methodology-card bg-blue-50 p-3 md:p-4 rounded-lg border-blue-500">
-                        <h3 class="font-semibold text-blue-800 text-sm md:text-base mb-2">⚖️ Analytic Hierarchy Process (AHP)</h3>
-                        <p class="text-xs md:text-sm text-blue-600 mb-2">Penetapan bobot kriteria untuk framework 5 dimensi assessment</p>
-                        <div class="text-xs text-blue-500">
-                            <div>• Evaluasi sistematis kriteria bertentangan</div>
-                            <div>• Transparansi pengambilan keputusan</div>
+                    <div class="bg-orange-500/20 rounded-lg p-3 md:p-4 border border-orange-300/30">
+                        <h3 class="font-semibold text-white mb-2">Klaster Sistemik</h3>
+                        <div class="text-orange-100 text-sm space-y-1">
+                            <p><strong>Risiko:</strong> Ketimpangan partisipasi, etika</p>
+                            <p><strong>Dampak:</strong> Erosi kepercayaan publik</p>
+                            <p><strong>Mitigasi:</strong> Framework Pancasila + inklusivitas</p>
                         </div>
                     </div>
-                    
-                    <div class="methodology-card bg-blue-50 p-3 md:p-4 rounded-lg border-blue-500">
-                        <h3 class="font-semibold text-blue-800 text-sm md:text-base mb-2">🤝 Delphi Technique</h3>
-                        <p class="text-xs md:text-sm text-blue-600 mb-2">Structured stakeholder consultation dengan 55 experts</p>
-                        <div class="text-xs text-blue-500">
-                            <div>• 3 rounds iterasi validasi</div>
-                            <div>• 87% ranking stability achieved</div>
+                    <div class="bg-yellow-500/20 rounded-lg p-3 md:p-4 border border-yellow-300/30">
+                        <h3 class="font-semibold text-white mb-2">Klaster Teknis</h3>
+                        <div class="text-yellow-100 text-sm space-y-1">
+                            <p><strong>Risiko:</strong> Evaluasi dampak, replikasi</p>
+                            <p><strong>Dampak:</strong> Kesulitan akuntabilitas investasi</p>
+                            <p><strong>Mitigasi:</strong> Model 3D + panduan replikasi</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Stage 2: Assessment & Evaluation -->
-        <section class="mb-6 md:mb-12 fade-in">
-            <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
-                <div class="flex items-center mb-4 md:mb-6">
-                    <div class="stage-indicator stage-2 text-white mr-3">2</div>
-                    <h2 class="text-lg md:text-2xl font-bold text-gray-800">
-                        Assessment & Evaluation - Penilaian & Scoring
-                    </h2>
-                </div>
-                
-                <div class="methodology-grid grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
-                    <div class="methodology-card bg-green-50 p-3 md:p-4 rounded-lg border-green-500">
-                        <h3 class="font-semibold text-green-800 text-sm md:text-base mb-2">🎯 MCDA Framework</h3>
-                        <p class="text-xs md:text-sm text-green-600 mb-2">Multi-Criteria Decision Analysis dengan 5 dimensi scoring</p>
-                        <div class="text-xs text-green-500">
-                            <div>• Strategic Alignment (25%)</div>
-                            <div>• Social-Economic Impact (30%)</div>
-                            <div>• Technical + Implementation (35%)</div>
-                            <div>• Scalability & Replication (10%)</div>
+        <!-- Gap Analysis -->
+        <section class="mb-6 md:mb-8">
+            <div class="glass-effect rounded-lg md:rounded-xl p-4 md:p-6 card-hover">
+                <h2 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">📊 Analisis Gap Kritis</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                    <div class="space-y-3">
+                        <h3 class="font-semibold text-white">Current State (2024)</h3>
+                        <div class="bg-white/10 rounded-lg p-3 md:p-4">
+                            <div class="space-y-2 text-sm text-blue-100">
+                                <p>• Digital Maturity Index: <strong>2.8/5.0</strong></p>
+                                <p>• Use case operasional: <strong>23 implementasi</strong></p>
+                                <p>• Coverage nasional: <strong>&lt;10% populasi</strong></p>
+                                <p>• Ketergantungan vendor asing: <strong>78%</strong></p>
+                                <p>• Interoperabilitas sistem: <strong>23%</strong></p>
+                            </div>
                         </div>
                     </div>
-                    
-                    <div class="methodology-card bg-green-50 p-3 md:p-4 rounded-lg border-green-500">
-                        <h3 class="font-semibold text-green-800 text-sm md:text-base mb-2">🔧 Technical Readiness Level (TRL)</h3>
-                        <p class="text-xs md:text-sm text-green-600 mb-2">Assessment kematangan teknologi level 1-9</p>
-                        <div class="text-xs text-green-500">
-                            <div>• TRL 1-3: Research/concept phase</div>
-                            <div>• TRL 4-6: Development/testing</div>
-                            <div>• TRL 7-9: Deployment ready</div>
-                        </div>
-                    </div>
-                    
-                    <div class="methodology-card bg-green-50 p-3 md:p-4 rounded-lg border-green-500">
-                        <h3 class="font-semibold text-green-800 text-sm md:text-base mb-2">💰 SROI Analysis</h3>
-                        <p class="text-xs md:text-sm text-green-600 mb-2">Social Return on Investment untuk dampak terukur</p>
-                        <div class="text-xs text-green-500">
-                            <div>• Economic Impact (40%)</div>
-                            <div>• Social Impact (30%)</div>
-                            <div>• QoL + Environmental (30%)</div>
+                    <div class="space-y-3">
+                        <h3 class="font-semibold text-white">Target Vision (2030)</h3>
+                        <div class="bg-white/10 rounded-lg p-3 md:p-4">
+                            <div class="space-y-2 text-sm text-blue-100">
+                                <p>• Digital Maturity Index: <strong>4.3/5.0</strong></p>
+                                <p>• Use case operasional: <strong>100+ implementasi</strong></p>
+                                <p>• Coverage nasional: <strong>95% populasi</strong></p>
+                                <p>• Teknologi indigenous: <strong>60% capability</strong></p>
+                                <p>• Interoperabilitas sistem: <strong>95%</strong></p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Stage 3: Validation & Risk Management -->
-        <section class="mb-6 md:mb-12 fade-in">
-            <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
-                <div class="flex items-center mb-4 md:mb-6">
-                    <div class="stage-indicator stage-3 text-white mr-3">3</div>
-                    <h2 class="text-lg md:text-2xl font-bold text-gray-800">
-                        Validation & Risk Management - Verifikasi & Mitigasi
-                    </h2>
+        <!-- MCDA Framework -->
+        <section class="mb-6 md:mb-8">
+            <div class="glass-effect rounded-lg md:rounded-xl p-4 md:p-6 card-hover">
+                <h2 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">🎯 Framework MCDA (Multi-Criteria Decision Analysis)</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-5 gap-3 md:gap-4">
+                    <div class="bg-blue-500/20 rounded-lg p-3 md:p-4 border border-blue-300/30">
+                        <div class="text-center mb-2">
+                            <div class="text-2xl md:text-3xl font-bold text-white">30%</div>
+                            <h3 class="font-semibold text-blue-100">Social-Economic Impact</h3>
+                        </div>
+                        <div class="text-xs text-blue-200">
+                            <p>• SROI Analysis</p>
+                            <p>• GDP Contribution</p>
+                            <p>• QoL Improvement</p>
+                        </div>
+                    </div>
+                    <div class="bg-green-500/20 rounded-lg p-3 md:p-4 border border-green-300/30">
+                        <div class="text-center mb-2">
+                            <div class="text-2xl md:text-3xl font-bold text-white">25%</div>
+                            <h3 class="font-semibold text-green-100">Strategic Alignment</h3>
+                        </div>
+                        <div class="text-xs text-green-200">
+                            <p>• RPJPN 2025-2045</p>
+                            <p>• SDGs Targets</p>
+                            <p>• Astacita Integration</p>
+                        </div>
+                    </div>
+                    <div class="bg-purple-500/20 rounded-lg p-3 md:p-4 border border-purple-300/30">
+                        <div class="text-center mb-2">
+                            <div class="text-2xl md:text-3xl font-bold text-white">20%</div>
+                            <h3 class="font-semibold text-purple-100">Technical Feasibility</h3>
+                        </div>
+                        <div class="text-xs text-purple-200">
+                            <p>• TRL Assessment</p>
+                            <p>• Infrastructure Ready</p>
+                            <p>• Data Quality</p>
+                        </div>
+                    </div>
+                    <div class="bg-orange-500/20 rounded-lg p-3 md:p-4 border border-orange-300/30">
+                        <div class="text-center mb-2">
+                            <div class="text-2xl md:text-3xl font-bold text-white">15%</div>
+                            <h3 class="font-semibold text-orange-100">Implementation Feasibility</h3>
+                        </div>
+                        <div class="text-xs text-orange-200">
+                            <p>• Resource Assessment</p>
+                            <p>• Stakeholder Readiness</p>
+                            <p>• Risk Analysis</p>
+                        </div>
+                    </div>
+                    <div class="bg-red-500/20 rounded-lg p-3 md:p-4 border border-red-300/30">
+                        <div class="text-center mb-2">
+                            <div class="text-2xl md:text-3xl font-bold text-white">10%</div>
+                            <h3 class="font-semibold text-red-100">Scalability & Replication</h3>
+                        </div>
+                        <div class="text-xs text-red-200">
+                            <p>• Adaptation Potential</p>
+                            <p>• Learning Spillovers</p>
+                            <p>• Sustainability Model</p>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="methodology-grid grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
-                    <div class="methodology-card bg-orange-50 p-3 md:p-4 rounded-lg border-orange-500">
-                        <h3 class="font-semibold text-orange-800 text-sm md:text-base mb-2">⚠️ FMEA (Failure Mode Analysis)</h3>
-                        <p class="text-xs md:text-sm text-orange-600 mb-2">Identifikasi pola kegagalan dan pencegahan</p>
-                        <div class="text-xs text-orange-500">
-                            <div>• Adapted untuk konteks Indonesia</div>
-                            <div>• Kompleksitas geografis & sosial-budaya</div>
+                <div class="mt-4 bg-white/10 rounded-lg p-3 md:p-4">
+                    <p class="text-center text-white text-sm md:text-base">
+                        <strong>Formula Scoring:</strong> Total Priority Score = Σ(Criteria Weight × Criteria Score × Certainty Factor)
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation Phases -->
+        <section class="mb-6 md:mb-8">
+            <div class="glass-effect rounded-lg md:rounded-xl p-4 md:p-6 card-hover">
+                <h2 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">🚀 4-Fase Implementasi Strategis</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+                    <div class="bg-gradient-to-b from-blue-500/30 to-blue-600/30 rounded-lg p-3 md:p-4 border border-blue-300/30">
+                        <div class="phase-indicator text-white text-xs px-2 py-1 rounded-full mb-2 text-center">2025-2026</div>
+                        <h3 class="font-semibold text-white mb-2">Foundation Building</h3>
+                        <div class="text-blue-100 text-xs space-y-1">
+                            <p>• Technology Push</p>
+                            <p>• 100+ use cases documented</p>
+                            <p>• 500+ AI practitioners</p>
+                            <p>• 5 protocols standardized</p>
                         </div>
                     </div>
-                    
-                    <div class="methodology-card bg-orange-50 p-3 md:p-4 rounded-lg border-orange-500">
-                        <h3 class="font-semibold text-orange-800 text-sm md:text-base mb-2">🛡️ ISO 31000 Risk Framework</h3>
-                        <p class="text-xs md:text-sm text-orange-600 mb-2">Integrated dengan NIST AI 100-1 standards</p>
-                        <div class="text-xs text-orange-500">
-                            <div>• Prevent → Mitigate → Transfer → Accept</div>
-                            <div>• 3 klaster risiko: Operasional, Sistemik, Teknis</div>
+                    <div class="bg-gradient-to-b from-green-500/30 to-green-600/30 rounded-lg p-3 md:p-4 border border-green-300/30">
+                        <div class="phase-indicator text-white text-xs px-2 py-1 rounded-full mb-2 text-center">2027-2028</div>
+                        <h3 class="font-semibold text-white mb-2">Scale-Up Integration</h3>
+                        <div class="text-green-100 text-xs space-y-1">
+                            <p>• Market Pull Emergence</p>
+                            <p>• 70% K/L operational AI</p>
+                            <p>• 80% citizen satisfaction</p>
+                            <p>• Cross-sector integration</p>
                         </div>
                     </div>
-                    
-                    <div class="methodology-card bg-orange-50 p-3 md:p-4 rounded-lg border-orange-500">
-                        <h3 class="font-semibold text-orange-800 text-sm md:text-base mb-2">📈 Sensitivity Analysis</h3>
-                        <p class="text-xs md:text-sm text-orange-600 mb-2">Robustness testing untuk stabilitas framework</p>
-                        <div class="text-xs text-orange-500">
-                            <div>• Weight variations ±20% testing</div>
-                            <div>• Multiple scenario validation</div>
+                    <div class="bg-gradient-to-b from-purple-500/30 to-purple-600/30 rounded-lg p-3 md:p-4 border border-purple-300/30">
+                        <div class="phase-indicator text-white text-xs px-2 py-1 rounded-full mb-2 text-center">2029-2030</div>
+                        <h3 class="font-semibold text-white mb-2">Optimization Leadership</h3>
+                        <div class="text-purple-100 text-xs space-y-1">
+                            <p>• Technology-Market Balance</p>
+                            <p>• Top 20 AI Readiness Index</p>
+                            <p>• 90% data interoperability</p>
+                            <p>• Innovation ecosystem</p>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-b from-orange-500/30 to-orange-600/30 rounded-lg p-3 md:p-4 border border-orange-300/30">
+                        <div class="phase-indicator text-white text-xs px-2 py-1 rounded-full mb-2 text-center">2031-2035</div>
+                        <h3 class="font-semibold text-white mb-2">Sustained Excellence</h3>
+                        <div class="text-orange-100 text-xs space-y-1">
+                            <p>• Innovation Leadership</p>
+                            <p>• 3% GDP contribution</p>
+                            <p>• ASEAN standards leader</p>
+                            <p>• Global recognition</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Stage 4: Implementation & Coordination -->
-        <section class="mb-6 md:mb-12 fade-in">
-            <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
-                <div class="flex items-center mb-4 md:mb-6">
-                    <div class="stage-indicator stage-4 text-white mr-3">4</div>
-                    <h2 class="text-lg md:text-2xl font-bold text-gray-800">
-                        Implementation & Coordination - Pelaksanaan & Orkestrasi
-                    </h2>
-                </div>
-                
-                <div class="methodology-grid grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
-                    <div class="methodology-card bg-purple-50 p-3 md:p-4 rounded-lg border-purple-500">
-                        <h3 class="font-semibold text-purple-800 text-sm md:text-base mb-2">🔗 Design Structure Matrix (DSM)</h3>
-                        <p class="text-xs md:text-sm text-purple-600 mb-2">Mapping interdependensi antar sektor kompleks</p>
-                        <div class="text-xs text-purple-500">
-                            <div>• Critical pathways identification</div>
-                            <div>• Cross-sector integration points</div>
+        <!-- Cross-Sector Integration -->
+        <section class="mb-6 md:mb-8">
+            <div class="glass-effect rounded-lg md:rounded-xl p-4 md:p-6 card-hover">
+                <h2 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">🔗 Analisis Pengembangan Lintas Sektoral</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-4">
+                    <div class="bg-cyan-500/20 rounded-lg p-3 md:p-4 border border-cyan-300/30">
+                        <h3 class="font-semibold text-white mb-2">Human Capital Cluster</h3>
+                        <div class="text-cyan-100 text-sm space-y-1">
+                            <p><strong>Sektor:</strong> Kesehatan + Pendidikan + Tata Kelola</p>
+                            <p><strong>AI Apps:</strong> Personalized learning, preventive healthcare</p>
+                            <p><strong>Target:</strong> 40% improvement service delivery</p>
                         </div>
                     </div>
-                    
-                    <div class="methodology-card bg-purple-50 p-3 md:p-4 rounded-lg border-purple-500">
-                        <h3 class="font-semibold text-purple-800 text-sm md:text-base mb-2">🌐 Network Governance</h3>
-                        <p class="text-xs md:text-sm text-purple-600 mb-2">Multi-stakeholder coordination framework</p>
-                        <div class="text-xs text-purple-500">
-                            <div>• Boundary objects coordination</div>
-                            <div>• Risk liaison network across 6 pillars</div>
+                    <div class="bg-emerald-500/20 rounded-lg p-3 md:p-4 border border-emerald-300/30">
+                        <h3 class="font-semibold text-white mb-2">Economic Infrastructure</h3>
+                        <div class="text-emerald-100 text-sm space-y-1">
+                            <p><strong>Sektor:</strong> Keuangan + Transportasi + Energi</p>
+                            <p><strong>AI Apps:</strong> Predictive maintenance, route optimization</p>
+                            <p><strong>Target:</strong> 25% reduction operational costs</p>
                         </div>
                     </div>
-                    
-                    <div class="methodology-card bg-purple-50 p-3 md:p-4 rounded-lg border-purple-500">
-                        <h3 class="font-semibold text-purple-800 text-sm md:text-base mb-2">🏗️ Microservices Architecture</h3>
-                        <p class="text-xs md:text-sm text-purple-600 mb-2">Platform PRISMA-AI dengan AI Service (RAG+LLM)</p>
-                        <div class="text-xs text-purple-500">
-                            <div>• API-first, event-driven design</div>
-                            <div>• Hybrid cloud deployment strategy</div>
+                    <div class="bg-teal-500/20 rounded-lg p-3 md:p-4 border border-teal-300/30">
+                        <h3 class="font-semibold text-white mb-2">Sustainability Cluster</h3>
+                        <div class="text-teal-100 text-sm space-y-1">
+                            <p><strong>Sektor:</strong> Pangan + Energi + Tata Kelola</p>
+                            <p><strong>AI Apps:</strong> Climate adaptation, resource optimization</p>
+                            <p><strong>Target:</strong> 30% improvement resource utilization</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Stage 5: Monitoring & Continuous Improvement -->
-        <section class="mb-6 md:mb-12 fade-in">
-            <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
-                <div class="flex items-center mb-4 md:mb-6">
-                    <div class="stage-indicator stage-5 text-white mr-3">5</div>
-                    <h2 class="text-lg md:text-2xl font-bold text-gray-800">
-                        Monitoring & Continuous Improvement - Pemantauan & Optimasi
-                    </h2>
-                </div>
-                
-                <div class="methodology-grid grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
-                    <div class="methodology-card bg-red-50 p-3 md:p-4 rounded-lg border-red-500">
-                        <h3 class="font-semibold text-red-800 text-sm md:text-base mb-2">📊 Balanced Scorecard</h3>
-                        <p class="text-xs md:text-sm text-red-600 mb-2">4 perspektif monitoring: Financial, Social, Process, Learning</p>
-                        <div class="text-xs text-red-500">
-                            <div>• 12 KPI utama performance tracking</div>
-                            <div>• Quarterly strategic reviews</div>
+        <!-- Key Success Metrics -->
+        <section class="mb-6 md:mb-8">
+            <div class="glass-effect rounded-lg md:rounded-xl p-4 md:p-6 card-hover">
+                <h2 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">📈 12 KPI Utama Balanced Scorecard</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+                    <div class="space-y-2">
+                        <h3 class="font-semibold text-yellow-300 text-sm">Ekonomi</h3>
+                        <div class="bg-white/10 rounded-lg p-2 md:p-3 space-y-1 text-xs text-white">
+                            <p>• GDP Contribution: 1.2%</p>
+                            <p>• Efficiency Gains: 35%</p>
+                            <p>• FDI Attraction: $500M</p>
                         </div>
                     </div>
-                    
-                    <div class="methodology-card bg-red-50 p-3 md:p-4 rounded-lg border-red-500">
-                        <h3 class="font-semibold text-red-800 text-sm md:text-base mb-2">🎯 Theory of Change</h3>
-                        <p class="text-xs md:text-sm text-red-600 mb-2">Impact evaluation dengan value creation measurement</p>
-                        <div class="text-xs text-red-500">
-                            <div>• Quasi-experimental design</div>
-                            <div>• Annual comprehensive assessment</div>
+                    <div class="space-y-2">
+                        <h3 class="font-semibold text-blue-300 text-sm">Sosial</h3>
+                        <div class="bg-white/10 rounded-lg p-2 md:p-3 space-y-1 text-xs text-white">
+                            <p>• Digital Inclusion: 95%</p>
+                            <p>• Citizen Satisfaction: 90%</p>
+                            <p>• Skills Development: 80%</p>
                         </div>
                     </div>
-                    
-                    <div class="methodology-card bg-red-50 p-3 md:p-4 rounded-lg border-red-500">
-                        <h3 class="font-semibold text-red-800 text-sm md:text-base mb-2">🔄 CI/CD Pipeline</h3>
-                        <p class="text-xs md:text-sm text-red-600 mb-2">Continuous Integration/Deployment untuk optimasi teknis</p>
-                        <div class="text-xs text-red-500">
-                            <div>• Automated testing & quality assurance</div>
-                            <div>• Real-time performance monitoring</div>
+                    <div class="space-y-2">
+                        <h3 class="font-semibold text-green-300 text-sm">Operasional</h3>
+                        <div class="bg-white/10 rounded-lg p-2 md:p-3 space-y-1 text-xs text-white">
+                            <p>• Service Speed: 50% faster</p>
+                            <p>• Interoperability: 90%</p>
+                            <p>• Error Rate: <2%</p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 3-Tier Selection Results -->
-        <section class="mb-6 md:mb-12 fade-in">
-            <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
-                <h2 class="text-lg md:text-2xl font-bold mb-4 md:mb-6 text-gray-800 text-center">
-                    🏆 Output: 3-Tier Selection Framework
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
-                    <div class="bg-gradient-to-br from-red-500 to-red-600 text-white p-4 md:p-6 rounded-lg text-center">
-                        <div class="text-2xl md:text-3xl font-bold mb-2">Tier 1</div>
-                        <div class="text-sm md:text-base font-semibold mb-2">Critical Implementation</div>
-                        <div class="text-xs md:text-sm space-y-1">
-                            <div>⚡ Skor ≥ 8.0</div>
-                            <div>💰 60% budget allocation</div>
-                            <div>🎯 Immediate start</div>
-                            <div>📈 80% success target</div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-4 md:p-6 rounded-lg text-center">
-                        <div class="text-2xl md:text-3xl font-bold mb-2">Tier 2</div>
-                        <div class="text-sm md:text-base font-semibold mb-2">Strategic Implementation</div>
-                        <div class="text-xs md:text-sm space-y-1">
-                            <div>⚡ Skor 6.5-7.9</div>
-                            <div>💰 30% budget allocation</div>
-                            <div>🎯 Phase 2 (2026-2027)</div>
-                            <div>📈 70% success target</div>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-4 md:p-6 rounded-lg text-center">
-                        <div class="text-2xl md:text-3xl font-bold mb-2">Tier 3</div>
-                        <div class="text-sm md:text-base font-semibold mb-2">Development Pipeline</div>
-                        <div class="text-xs md:text-sm space-y-1">
-                            <div>⚡ Skor 5.0-6.4</div>
-                            <div>💰 10% for pilot</div>
-                            <div>🎯 Exploratory phase</div>
-                            <div>📈 Proof of concept</div>
+                    <div class="space-y-2">
+                        <h3 class="font-semibold text-purple-300 text-sm">Inovasi</h3>
+                        <div class="bg-white/10 rounded-lg p-2 md:p-3 space-y-1 text-xs text-white">
+                            <p>• New Use Cases: 50+/year</p>
+                            <p>• Global Ranking: Top 15</p>
+                            <p>• ASEAN Standards: 3+</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Target Achievements -->
-        <section class="mb-6 md:mb-12 fade-in">
-            <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
-                <h2 class="text-lg md:text-2xl font-bold mb-4 md:mb-6 text-gray-800 text-center">
-                    🎯 Target Pencapaian Indonesia Emas 2045
-                </h2>
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
-                    <div class="text-center bg-blue-50 p-3 md:p-4 rounded-lg">
-                        <div class="text-2xl md:text-4xl font-bold text-blue-600">100+</div>
-                        <div class="text-xs md:text-sm text-blue-800 font-medium">Use Cases Operasional</div>
-                        <div class="text-xs text-blue-600">by 2030</div>
-                    </div>
-                    <div class="text-center bg-green-50 p-3 md:p-4 rounded-lg">
-                        <div class="text-2xl md:text-4xl font-bold text-green-600">95%</div>
-                        <div class="text-xs md:text-sm text-green-800 font-medium">Interoperabilitas</div>
-                        <div class="text-xs text-green-600">Cross-sector integration</div>
-                    </div>
-                    <div class="text-center bg-purple-50 p-3 md:p-4 rounded-lg">
-                        <div class="text-2xl md:text-4xl font-bold text-purple-600">Top 15</div>
-                        <div class="text-xs md:text-sm text-purple-800 font-medium">Global AI Ranking</div>
-                        <div class="text-xs text-purple-600">Digital Government Index</div>
-                    </div>
-                    <div class="text-center bg-orange-50 p-3 md:p-4 rounded-lg">
-                        <div class="text-2xl md:text-4xl font-bold text-orange-600">3%</div>
-                        <div class="text-xs md:text-sm text-orange-800 font-medium">GDP Contribution</div>
-                        <div class="text-xs text-orange-600">AI ecosystem impact</div>
+        <!-- Conclusion -->
+        <section>
+            <div class="glass-effect rounded-lg md:rounded-xl p-4 md:p-6 card-hover">
+                <h2 class="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">✨ Kesimpulan Metodologi</h2>
+                <div class="bg-white/10 rounded-lg p-3 md:p-4">
+                    <p class="text-white text-sm md:text-base leading-relaxed">
+                        Framework metodologi Use Case AI Indonesia mengintegrasikan pendekatan <strong>Multi-Criteria Decision Analysis (MCDA)</strong> 
+                        dengan <strong>manajemen risiko 3-klaster</strong> dan <strong>implementasi 4-fase strategis</strong>. 
+                        Metodologi ini memastikan adopsi AI yang <em>terukur, berkelanjutan, dan berdampak transformatif</em> 
+                        untuk mencapai Visi Indonesia Emas 2045 melalui koordinasi lintas sektor yang sistematis.
+                    </p>
+                    <div class="mt-3 md:mt-4 flex flex-wrap gap-2">
+                        <span class="inline-flex items-center px-2 md:px-3 py-1 rounded-full bg-blue-500/30 text-white text-xs">Evidence-Based</span>
+                        <span class="inline-flex items-center px-2 md:px-3 py-1 rounded-full bg-green-500/30 text-white text-xs">Systematic</span>
+                        <span class="inline-flex items-center px-2 md:px-3 py-1 rounded-full bg-purple-500/30 text-white text-xs">Transparent</span>
+                        <span class="inline-flex items-center px-2 md:px-3 py-1 rounded-full bg-orange-500/30 text-white text-xs">Accountable</span>
                     </div>
                 </div>
-            </div
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-4 md:py-6">
+        <div class="max-w-6xl mx-auto px-3 md:px-6">
+            <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-4">
+                <div class="text-center text-blue-100 text-xs md:text-sm">
+                    <p>Kelompok Kerja Use Case | Peta Jalan Kecerdasan Artifisial Indonesia 2025-2045</p>
+                    <p class="mt-1">Mendukung pencapaian Visi Indonesia Emas 2045</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
