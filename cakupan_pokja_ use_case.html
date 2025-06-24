@@ -24,77 +24,38 @@
             }
         }
         
-        /* Timeline styles */
-        .timeline-item {
+        /* Process flow styles */
+        .process-step {
             position: relative;
-            padding-left: 20px;
+            padding: 16px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
         }
         
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #3b82f6;
+        .process-step:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
-        .timeline-line {
-            position: absolute;
-            left: 5px;
-            top: 20px;
-            bottom: -10px;
+        .step-connector {
             width: 2px;
-            background: #e5e7eb;
-        }
-        
-        /* Assessment circle */
-        .assessment-circle {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: conic-gradient(
-                #3b82f6 0deg 108deg,    /* Strategic: 30% */
-                #10b981 108deg 180deg,  /* Social-Economic: 20% */
-                #f59e0b 180deg 252deg,  /* Technical: 20% */
-                #ef4444 252deg 306deg,  /* Implementation: 15% */
-                #8b5cf6 306deg 360deg   /* Scalability: 15% */
-            );
-            position: relative;
+            height: 40px;
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
             margin: 0 auto;
         }
         
-        .assessment-center {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            border-radius: 50%;
-            width: 120px;
-            height: 120px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* Responsive adjustments */
-        @media (max-width: 767px) {
-            .assessment-circle {
-                width: 160px;
-                height: 160px;
-            }
-            .assessment-center {
-                width: 90px;
-                height: 90px;
+        @media (min-width: 768px) {
+            .step-connector {
+                width: 40px;
+                height: 2px;
+                background: linear-gradient(to right, #3b82f6, #8b5cf6);
+                margin: auto 0;
             }
         }
         
         /* Animation for engagement */
         .fade-in {
-            animation: fadeIn 1s ease-in;
+            animation: fadeIn 0.8s ease-in;
         }
         
         @keyframes fadeIn {
@@ -102,20 +63,41 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Process flow arrows */
-        .arrow-right {
-            width: 0;
-            height: 0;
-            border-left: 8px solid #3b82f6;
-            border-top: 6px solid transparent;
-            border-bottom: 6px solid transparent;
-            margin: 0 8px;
+        /* Stage indicators */
+        .stage-indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 12px;
         }
         
-        /* Tier badges */
-        .tier-1 { background: linear-gradient(45deg, #dc2626, #ef4444); }
-        .tier-2 { background: linear-gradient(45deg, #d97706, #f59e0b); }
-        .tier-3 { background: linear-gradient(45deg, #059669, #10b981); }
+        .stage-1 { background: linear-gradient(45deg, #3b82f6, #1d4ed8); }
+        .stage-2 { background: linear-gradient(45deg, #10b981, #059669); }
+        .stage-3 { background: linear-gradient(45deg, #f59e0b, #d97706); }
+        .stage-4 { background: linear-gradient(45deg, #8b5cf6, #7c3aed); }
+        .stage-5 { background: linear-gradient(45deg, #ef4444, #dc2626); }
+        
+        /* Methodology cards */
+        .methodology-card {
+            border-left: 4px solid;
+            transition: all 0.3s ease;
+        }
+        
+        .methodology-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* Responsive grid adjustments */
+        @media (max-width: 767px) {
+            .methodology-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -126,7 +108,7 @@
                 Metodologi Use Case AI Indonesia
             </h1>
             <p class="text-sm md:text-base lg:text-lg text-center opacity-90">
-                Framework Peta Jalan Kecerdasan Artifisial Nasional 2025-2045
+                Alur Logis Pengembangan Kecerdasan Artifisial Nasional 2025-2045
             </p>
         </div>
     </header>
@@ -134,294 +116,323 @@
     <!-- Main Content -->
     <main class="container mx-auto px-3 md:px-6 py-4 md:py-8">
         
-        <!-- Overview Section -->
-        <section class="mb-6 md:mb-12 fade-in">
-            <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
-                <h2 class="text-lg md:text-2xl font-bold mb-3 md:mb-4 text-gray-800">
-                    🎯 Tujuan Metodologi
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
-                    <div class="bg-blue-50 p-3 md:p-4 rounded-lg">
-                        <h3 class="font-semibold text-blue-800 text-sm md:text-base">Alignment Strategis</h3>
-                        <p class="text-xs md:text-sm text-blue-600 mt-1">Menyelaraskan inisiatif AI dengan RPJPN 2025-2045 dan Visi Indonesia Emas</p>
-                    </div>
-                    <div class="bg-green-50 p-3 md:p-4 rounded-lg">
-                        <h3 class="font-semibold text-green-800 text-sm md:text-base">Dampak Terukur</h3>
-                        <p class="text-xs md:text-sm text-green-600 mt-1">Prioritas sektor dengan potensi dampak tinggi dan kesiapan implementasi</p>
-                    </div>
-                    <div class="bg-purple-50 p-3 md:p-4 rounded-lg">
-                        <h3 class="font-semibold text-purple-800 text-sm md:text-base">Adopsi Berkelanjutan</h3>
-                        <p class="text-xs md:text-sm text-purple-600 mt-1">Mendorong adopsi AI lintas sektor yang terarah dan berkelanjutan</p>
-                    </div>
-                    <div class="bg-orange-50 p-3 md:p-4 rounded-lg">
-                        <h3 class="font-semibold text-orange-800 text-sm md:text-base">Ekosistem Etis</h3>
-                        <p class="text-xs md:text-sm text-orange-600 mt-1">Membangun ekosistem AI yang etis, inovatif, dan produktif</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 4-Phase Timeline -->
-        <section class="mb-6 md:mb-12 fade-in">
-            <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
-                <h2 class="text-lg md:text-2xl font-bold mb-4 md:mb-6 text-gray-800">
-                    📅 Framework 4-Fase Strategis
-                </h2>
-                <div class="space-y-4 md:space-y-6">
-                    <div class="timeline-item bg-blue-50 p-3 md:p-4 rounded-lg">
-                        <div class="timeline-line"></div>
-                        <h3 class="font-bold text-blue-800 text-sm md:text-base">Fase 1: Foundation Building (2025-2026)</h3>
-                        <p class="text-xs md:text-sm text-blue-600 mt-1">PRISMA-AI deployment, standardisasi protokol, basic AI literacy programs</p>
-                        <div class="text-xs md:text-sm text-blue-500 mt-2">📊 Target: 100+ use cases, 500+ AI practitioners certified</div>
-                    </div>
-                    
-                    <div class="timeline-item bg-green-50 p-3 md:p-4 rounded-lg">
-                        <div class="timeline-line"></div>
-                        <h3 class="font-bold text-green-800 text-sm md:text-base">Fase 2: Scale-Up Integration (2027-2028)</h3>
-                        <p class="text-xs md:text-sm text-green-600 mt-1">15-25 operational AI implementations, cross-sector integration</p>
-                        <div class="text-xs md:text-sm text-green-500 mt-2">📊 Target: 70% K/L dengan operational AI, 80% citizen satisfaction</div>
-                    </div>
-                    
-                    <div class="timeline-item bg-purple-50 p-3 md:p-4 rounded-lg">
-                        <div class="timeline-line"></div>
-                        <h3 class="font-bold text-purple-800 text-sm md:text-base">Fase 3: Optimization Leadership (2029-2030)</h3>
-                        <p class="text-xs md:text-sm text-purple-600 mt-1">40-50 mature use cases, regional leadership positioning</p>
-                        <div class="text-xs md:text-sm text-purple-500 mt-2">📊 Target: Top 20 Global AI Readiness Index, 90% data interoperability</div>
-                    </div>
-                    
-                    <div class="timeline-item bg-orange-50 p-3 md:p-4 rounded-lg">
-                        <h3 class="font-bold text-orange-800 text-sm md:text-base">Fase 4: Sustained Excellence (2031-2035)</h3>
-                        <p class="text-xs md:text-sm text-orange-600 mt-1">100+ operational use cases, ASEAN standards leadership</p>
-                        <div class="text-xs md:text-sm text-orange-500 mt-2">📊 Target: 3% GDP contribution, Indonesian standards adoption</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5-Dimension Assessment -->
+        <!-- Overview Flow -->
         <section class="mb-6 md:mb-12 fade-in">
             <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
                 <h2 class="text-lg md:text-2xl font-bold mb-4 md:mb-6 text-gray-800 text-center">
-                    ⚡ Framework 5 Dimensi Assessment
+                    🔄 Alur Metodologi End-to-End
                 </h2>
-                <div class="flex flex-col md:flex-row items-center gap-4 md:gap-8">
-                    <div class="assessment-circle">
-                        <div class="assessment-center">
-                            <div class="text-center">
-                                <div class="text-lg md:text-xl font-bold text-gray-800">MCDA</div>
-                                <div class="text-xs md:text-sm text-gray-600">Scoring</div>
-                            </div>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6">
+                    <div class="text-center">
+                        <div class="stage-indicator stage-1 text-white">1</div>
+                        <h3 class="font-semibold text-xs md:text-sm text-blue-800">Strategic Foundation</h3>
+                    </div>
+                    <div class="step-connector"></div>
+                    
+                    <div class="text-center">
+                        <div class="stage-indicator stage-2 text-white">2</div>
+                        <h3 class="font-semibold text-xs md:text-sm text-green-800">Assessment & Evaluation</h3>
+                    </div>
+                    <div class="step-connector"></div>
+                    
+                    <div class="text-center">
+                        <div class="stage-indicator stage-3 text-white">3</div>
+                        <h3 class="font-semibold text-xs md:text-sm text-orange-800">Validation & Risk</h3>
+                    </div>
+                    <div class="step-connector"></div>
+                    
+                    <div class="text-center">
+                        <div class="stage-indicator stage-4 text-white">4</div>
+                        <h3 class="font-semibold text-xs md:text-sm text-purple-800">Implementation</h3>
+                    </div>
+                    <div class="step-connector"></div>
+                    
+                    <div class="text-center">
+                        <div class="stage-indicator stage-5 text-white">5</div>
+                        <h3 class="font-semibold text-xs md:text-sm text-red-800">Monitoring</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stage 1: Strategic Foundation -->
+        <section class="mb-6 md:mb-12 fade-in">
+            <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
+                <div class="flex items-center mb-4 md:mb-6">
+                    <div class="stage-indicator stage-1 text-white mr-3">1</div>
+                    <h2 class="text-lg md:text-2xl font-bold text-gray-800">
+                        Strategic Foundation - Perencanaan & Framework
+                    </h2>
+                </div>
+                
+                <div class="methodology-grid grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+                    <div class="methodology-card bg-blue-50 p-3 md:p-4 rounded-lg border-blue-500">
+                        <h3 class="font-semibold text-blue-800 text-sm md:text-base mb-2">📊 Strategic Roadmapping</h3>
+                        <p class="text-xs md:text-sm text-blue-600 mb-2">4-fase implementation: Foundation → Scale-Up → Optimization → Excellence</p>
+                        <div class="text-xs text-blue-500">
+                            <div>• Technology-push & market-pull integration</div>
+                            <div>• Multi-stakeholder transformation framework</div>
                         </div>
                     </div>
-                    <div class="flex-1 space-y-2 md:space-y-3">
-                        <div class="flex items-center gap-2 md:gap-3">
-                            <div class="w-3 h-3 md:w-4 md:h-4 bg-blue-500 rounded"></div>
-                            <span class="text-xs md:text-sm"><strong>Strategic Alignment (25%)</strong> - RPJPN & SDGs alignment</span>
+                    
+                    <div class="methodology-card bg-blue-50 p-3 md:p-4 rounded-lg border-blue-500">
+                        <h3 class="font-semibold text-blue-800 text-sm md:text-base mb-2">⚖️ Analytic Hierarchy Process (AHP)</h3>
+                        <p class="text-xs md:text-sm text-blue-600 mb-2">Penetapan bobot kriteria untuk framework 5 dimensi assessment</p>
+                        <div class="text-xs text-blue-500">
+                            <div>• Evaluasi sistematis kriteria bertentangan</div>
+                            <div>• Transparansi pengambilan keputusan</div>
                         </div>
-                        <div class="flex items-center gap-2 md:gap-3">
-                            <div class="w-3 h-3 md:w-4 md:h-4 bg-green-500 rounded"></div>
-                            <span class="text-xs md:text-sm"><strong>Social-Economic Impact (30%)</strong> - Transformasi masyarakat</span>
-                        </div>
-                        <div class="flex items-center gap-2 md:gap-3">
-                            <div class="w-3 h-3 md:w-4 md:h-4 bg-yellow-500 rounded"></div>
-                            <span class="text-xs md:text-sm"><strong>Technical Feasibility (20%)</strong> - Kelayakan teknologi</span>
-                        </div>
-                        <div class="flex items-center gap-2 md:gap-3">
-                            <div class="w-3 h-3 md:w-4 md:h-4 bg-red-500 rounded"></div>
-                            <span class="text-xs md:text-sm"><strong>Implementation Feasibility (15%)</strong> - Kesiapan sumber daya</span>
-                        </div>
-                        <div class="flex items-center gap-2 md:gap-3">
-                            <div class="w-3 h-3 md:w-4 md:h-4 bg-purple-500 rounded"></div>
-                            <span class="text-xs md:text-sm"><strong>Scalability & Replication (10%)</strong> - Potensi ekspansi</span>
+                    </div>
+                    
+                    <div class="methodology-card bg-blue-50 p-3 md:p-4 rounded-lg border-blue-500">
+                        <h3 class="font-semibold text-blue-800 text-sm md:text-base mb-2">🤝 Delphi Technique</h3>
+                        <p class="text-xs md:text-sm text-blue-600 mb-2">Structured stakeholder consultation dengan 55 experts</p>
+                        <div class="text-xs text-blue-500">
+                            <div>• 3 rounds iterasi validasi</div>
+                            <div>• 87% ranking stability achieved</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Process Flow -->
+        <!-- Stage 2: Assessment & Evaluation -->
         <section class="mb-6 md:mb-12 fade-in">
             <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
-                <h2 class="text-lg md:text-2xl font-bold mb-4 md:mb-6 text-gray-800">
-                    🔄 Proses Kurasi Sistematis
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-5 gap-3 md:gap-4 items-center">
-                    <div class="bg-blue-100 p-3 md:p-4 rounded-lg text-center">
-                        <div class="text-2xl md:text-3xl mb-2">📝</div>
-                        <h3 class="font-semibold text-xs md:text-sm text-blue-800">Proposal Submission</h3>
-                        <p class="text-xs text-blue-600 mt-1">K/L, Pemda, Industri, Akademisi</p>
+                <div class="flex items-center mb-4 md:mb-6">
+                    <div class="stage-indicator stage-2 text-white mr-3">2</div>
+                    <h2 class="text-lg md:text-2xl font-bold text-gray-800">
+                        Assessment & Evaluation - Penilaian & Scoring
+                    </h2>
+                </div>
+                
+                <div class="methodology-grid grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+                    <div class="methodology-card bg-green-50 p-3 md:p-4 rounded-lg border-green-500">
+                        <h3 class="font-semibold text-green-800 text-sm md:text-base mb-2">🎯 MCDA Framework</h3>
+                        <p class="text-xs md:text-sm text-green-600 mb-2">Multi-Criteria Decision Analysis dengan 5 dimensi scoring</p>
+                        <div class="text-xs text-green-500">
+                            <div>• Strategic Alignment (25%)</div>
+                            <div>• Social-Economic Impact (30%)</div>
+                            <div>• Technical + Implementation (35%)</div>
+                            <div>• Scalability & Replication (10%)</div>
+                        </div>
                     </div>
-                    <div class="arrow-right hidden md:block mx-auto"></div>
                     
-                    <div class="bg-green-100 p-3 md:p-4 rounded-lg text-center">
-                        <div class="text-2xl md:text-3xl mb-2">🔍</div>
-                        <h3 class="font-semibold text-xs md:text-sm text-green-800">Assessment</h3>
-                        <p class="text-xs text-green-600 mt-1">5 Dimensi MCDA Scoring</p>
+                    <div class="methodology-card bg-green-50 p-3 md:p-4 rounded-lg border-green-500">
+                        <h3 class="font-semibold text-green-800 text-sm md:text-base mb-2">🔧 Technical Readiness Level (TRL)</h3>
+                        <p class="text-xs md:text-sm text-green-600 mb-2">Assessment kematangan teknologi level 1-9</p>
+                        <div class="text-xs text-green-500">
+                            <div>• TRL 1-3: Research/concept phase</div>
+                            <div>• TRL 4-6: Development/testing</div>
+                            <div>• TRL 7-9: Deployment ready</div>
+                        </div>
                     </div>
-                    <div class="arrow-right hidden md:block mx-auto"></div>
                     
-                    <div class="bg-purple-100 p-3 md:p-4 rounded-lg text-center">
-                        <div class="text-2xl md:text-3xl mb-2">⚖️</div>
-                        <h3 class="font-semibold text-xs md:text-sm text-purple-800">Validation</h3>
-                        <p class="text-xs text-purple-600 mt-1">Multi-stakeholder Review</p>
-                    </div>
-                    <div class="arrow-right hidden md:block mx-auto"></div>
-                    
-                    <div class="bg-orange-100 p-3 md:p-4 rounded-lg text-center">
-                        <div class="text-2xl md:text-3xl mb-2">🎯</div>
-                        <h3 class="font-semibold text-xs md:text-sm text-orange-800">Prioritization</h3>
-                        <p class="text-xs text-orange-600 mt-1">3-Tier Selection</p>
+                    <div class="methodology-card bg-green-50 p-3 md:p-4 rounded-lg border-green-500">
+                        <h3 class="font-semibold text-green-800 text-sm md:text-base mb-2">💰 SROI Analysis</h3>
+                        <p class="text-xs md:text-sm text-green-600 mb-2">Social Return on Investment untuk dampak terukur</p>
+                        <div class="text-xs text-green-500">
+                            <div>• Economic Impact (40%)</div>
+                            <div>• Social Impact (30%)</div>
+                            <div>• QoL + Environmental (30%)</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Tier System -->
+        <!-- Stage 3: Validation & Risk Management -->
         <section class="mb-6 md:mb-12 fade-in">
             <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
-                <h2 class="text-lg md:text-2xl font-bold mb-4 md:mb-6 text-gray-800">
-                    🏆 3-Tier Selection Framework
+                <div class="flex items-center mb-4 md:mb-6">
+                    <div class="stage-indicator stage-3 text-white mr-3">3</div>
+                    <h2 class="text-lg md:text-2xl font-bold text-gray-800">
+                        Validation & Risk Management - Verifikasi & Mitigasi
+                    </h2>
+                </div>
+                
+                <div class="methodology-grid grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+                    <div class="methodology-card bg-orange-50 p-3 md:p-4 rounded-lg border-orange-500">
+                        <h3 class="font-semibold text-orange-800 text-sm md:text-base mb-2">⚠️ FMEA (Failure Mode Analysis)</h3>
+                        <p class="text-xs md:text-sm text-orange-600 mb-2">Identifikasi pola kegagalan dan pencegahan</p>
+                        <div class="text-xs text-orange-500">
+                            <div>• Adapted untuk konteks Indonesia</div>
+                            <div>• Kompleksitas geografis & sosial-budaya</div>
+                        </div>
+                    </div>
+                    
+                    <div class="methodology-card bg-orange-50 p-3 md:p-4 rounded-lg border-orange-500">
+                        <h3 class="font-semibold text-orange-800 text-sm md:text-base mb-2">🛡️ ISO 31000 Risk Framework</h3>
+                        <p class="text-xs md:text-sm text-orange-600 mb-2">Integrated dengan NIST AI 100-1 standards</p>
+                        <div class="text-xs text-orange-500">
+                            <div>• Prevent → Mitigate → Transfer → Accept</div>
+                            <div>• 3 klaster risiko: Operasional, Sistemik, Teknis</div>
+                        </div>
+                    </div>
+                    
+                    <div class="methodology-card bg-orange-50 p-3 md:p-4 rounded-lg border-orange-500">
+                        <h3 class="font-semibold text-orange-800 text-sm md:text-base mb-2">📈 Sensitivity Analysis</h3>
+                        <p class="text-xs md:text-sm text-orange-600 mb-2">Robustness testing untuk stabilitas framework</p>
+                        <div class="text-xs text-orange-500">
+                            <div>• Weight variations ±20% testing</div>
+                            <div>• Multiple scenario validation</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stage 4: Implementation & Coordination -->
+        <section class="mb-6 md:mb-12 fade-in">
+            <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
+                <div class="flex items-center mb-4 md:mb-6">
+                    <div class="stage-indicator stage-4 text-white mr-3">4</div>
+                    <h2 class="text-lg md:text-2xl font-bold text-gray-800">
+                        Implementation & Coordination - Pelaksanaan & Orkestrasi
+                    </h2>
+                </div>
+                
+                <div class="methodology-grid grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+                    <div class="methodology-card bg-purple-50 p-3 md:p-4 rounded-lg border-purple-500">
+                        <h3 class="font-semibold text-purple-800 text-sm md:text-base mb-2">🔗 Design Structure Matrix (DSM)</h3>
+                        <p class="text-xs md:text-sm text-purple-600 mb-2">Mapping interdependensi antar sektor kompleks</p>
+                        <div class="text-xs text-purple-500">
+                            <div>• Critical pathways identification</div>
+                            <div>• Cross-sector integration points</div>
+                        </div>
+                    </div>
+                    
+                    <div class="methodology-card bg-purple-50 p-3 md:p-4 rounded-lg border-purple-500">
+                        <h3 class="font-semibold text-purple-800 text-sm md:text-base mb-2">🌐 Network Governance</h3>
+                        <p class="text-xs md:text-sm text-purple-600 mb-2">Multi-stakeholder coordination framework</p>
+                        <div class="text-xs text-purple-500">
+                            <div>• Boundary objects coordination</div>
+                            <div>• Risk liaison network across 6 pillars</div>
+                        </div>
+                    </div>
+                    
+                    <div class="methodology-card bg-purple-50 p-3 md:p-4 rounded-lg border-purple-500">
+                        <h3 class="font-semibold text-purple-800 text-sm md:text-base mb-2">🏗️ Microservices Architecture</h3>
+                        <p class="text-xs md:text-sm text-purple-600 mb-2">Platform PRISMA-AI dengan AI Service (RAG+LLM)</p>
+                        <div class="text-xs text-purple-500">
+                            <div>• API-first, event-driven design</div>
+                            <div>• Hybrid cloud deployment strategy</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stage 5: Monitoring & Continuous Improvement -->
+        <section class="mb-6 md:mb-12 fade-in">
+            <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
+                <div class="flex items-center mb-4 md:mb-6">
+                    <div class="stage-indicator stage-5 text-white mr-3">5</div>
+                    <h2 class="text-lg md:text-2xl font-bold text-gray-800">
+                        Monitoring & Continuous Improvement - Pemantauan & Optimasi
+                    </h2>
+                </div>
+                
+                <div class="methodology-grid grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+                    <div class="methodology-card bg-red-50 p-3 md:p-4 rounded-lg border-red-500">
+                        <h3 class="font-semibold text-red-800 text-sm md:text-base mb-2">📊 Balanced Scorecard</h3>
+                        <p class="text-xs md:text-sm text-red-600 mb-2">4 perspektif monitoring: Financial, Social, Process, Learning</p>
+                        <div class="text-xs text-red-500">
+                            <div>• 12 KPI utama performance tracking</div>
+                            <div>• Quarterly strategic reviews</div>
+                        </div>
+                    </div>
+                    
+                    <div class="methodology-card bg-red-50 p-3 md:p-4 rounded-lg border-red-500">
+                        <h3 class="font-semibold text-red-800 text-sm md:text-base mb-2">🎯 Theory of Change</h3>
+                        <p class="text-xs md:text-sm text-red-600 mb-2">Impact evaluation dengan value creation measurement</p>
+                        <div class="text-xs text-red-500">
+                            <div>• Quasi-experimental design</div>
+                            <div>• Annual comprehensive assessment</div>
+                        </div>
+                    </div>
+                    
+                    <div class="methodology-card bg-red-50 p-3 md:p-4 rounded-lg border-red-500">
+                        <h3 class="font-semibold text-red-800 text-sm md:text-base mb-2">🔄 CI/CD Pipeline</h3>
+                        <p class="text-xs md:text-sm text-red-600 mb-2">Continuous Integration/Deployment untuk optimasi teknis</p>
+                        <div class="text-xs text-red-500">
+                            <div>• Automated testing & quality assurance</div>
+                            <div>• Real-time performance monitoring</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3-Tier Selection Results -->
+        <section class="mb-6 md:mb-12 fade-in">
+            <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
+                <h2 class="text-lg md:text-2xl font-bold mb-4 md:mb-6 text-gray-800 text-center">
+                    🏆 Output: 3-Tier Selection Framework
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-6">
-                    <div class="tier-1 text-white p-3 md:p-4 rounded-lg">
-                        <h3 class="font-bold text-sm md:text-base">Tier 1: Critical (≥8.0)</h3>
-                        <div class="text-xs md:text-sm mt-2 space-y-1">
+                    <div class="bg-gradient-to-br from-red-500 to-red-600 text-white p-4 md:p-6 rounded-lg text-center">
+                        <div class="text-2xl md:text-3xl font-bold mb-2">Tier 1</div>
+                        <div class="text-sm md:text-base font-semibold mb-2">Critical Implementation</div>
+                        <div class="text-xs md:text-sm space-y-1">
+                            <div>⚡ Skor ≥ 8.0</div>
                             <div>💰 60% budget allocation</div>
-                            <div>⚡ Immediate implementation</div>
-                            <div>📊 80% success target</div>
+                            <div>🎯 Immediate start</div>
+                            <div>📈 80% success target</div>
                         </div>
                     </div>
                     
-                    <div class="tier-2 text-white p-3 md:p-4 rounded-lg">
-                        <h3 class="font-bold text-sm md:text-base">Tier 2: Strategic (6.5-7.9)</h3>
-                        <div class="text-xs md:text-sm mt-2 space-y-1">
+                    <div class="bg-gradient-to-br from-orange-500 to-orange-600 text-white p-4 md:p-6 rounded-lg text-center">
+                        <div class="text-2xl md:text-3xl font-bold mb-2">Tier 2</div>
+                        <div class="text-sm md:text-base font-semibold mb-2">Strategic Implementation</div>
+                        <div class="text-xs md:text-sm space-y-1">
+                            <div>⚡ Skor 6.5-7.9</div>
                             <div>💰 30% budget allocation</div>
-                            <div>⚡ Phase 2 implementation</div>
-                            <div>📊 70% success target</div>
+                            <div>🎯 Phase 2 (2026-2027)</div>
+                            <div>📈 70% success target</div>
                         </div>
                     </div>
                     
-                    <div class="tier-3 text-white p-3 md:p-4 rounded-lg">
-                        <h3 class="font-bold text-sm md:text-base">Tier 3: Development (5.0-6.4)</h3>
-                        <div class="text-xs md:text-sm mt-2 space-y-1">
+                    <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-4 md:p-6 rounded-lg text-center">
+                        <div class="text-2xl md:text-3xl font-bold mb-2">Tier 3</div>
+                        <div class="text-sm md:text-base font-semibold mb-2">Development Pipeline</div>
+                        <div class="text-xs md:text-sm space-y-1">
+                            <div>⚡ Skor 5.0-6.4</div>
                             <div>💰 10% for pilot</div>
-                            <div>⚡ Exploratory phase</div>
-                            <div>📊 Proof of concept</div>
+                            <div>🎯 Exploratory phase</div>
+                            <div>📈 Proof of concept</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Platform Architecture -->
+        <!-- Target Achievements -->
         <section class="mb-6 md:mb-12 fade-in">
             <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
-                <h2 class="text-lg md:text-2xl font-bold mb-4 md:mb-6 text-gray-800">
-                    🏗️ Platform PRISMA-AI Architecture
-                </h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
-                    <div class="bg-blue-50 p-3 md:p-4 rounded-lg border-l-4 border-blue-500">
-                        <h3 class="font-semibold text-blue-800 text-xs md:text-sm">Use Case Management</h3>
-                        <p class="text-xs text-blue-600 mt-1">CRUD operations, auto-tagging ML, version control</p>
-                    </div>
-                    
-                    <div class="bg-green-50 p-3 md:p-4 rounded-lg border-l-4 border-green-500">
-                        <h3 class="font-semibold text-green-800 text-xs md:text-sm">Data Integration</h3>
-                        <p class="text-xs text-green-600 mt-1">ETL pipelines, quality assurance, format normalization</p>
-                    </div>
-                    
-                    <div class="bg-purple-50 p-3 md:p-4 rounded-lg border-l-4 border-purple-500">
-                        <h3 class="font-semibold text-purple-800 text-xs md:text-sm">Auth & Authorization</h3>
-                        <p class="text-xs text-purple-600 mt-1">OAuth2, RBAC, SSO integration, audit logging</p>
-                    </div>
-                    
-                    <div class="bg-orange-50 p-3 md:p-4 rounded-lg border-l-4 border-orange-500">
-                        <h3 class="font-semibold text-orange-800 text-xs md:text-sm">Analytics & Reporting</h3>
-                        <p class="text-xs text-orange-600 mt-1">Real-time visualization, automated narratives</p>
-                    </div>
-                    
-                    <div class="bg-red-50 p-3 md:p-4 rounded-lg border-l-4 border-red-500">
-                        <h3 class="font-semibold text-red-800 text-xs md:text-sm">Workflow Engine</h3>
-                        <p class="text-xs text-red-600 mt-1">Approval process, auto-routing, notifications</p>
-                    </div>
-                    
-                    <div class="bg-yellow-50 p-3 md:p-4 rounded-lg border-l-4 border-yellow-500">
-                        <h3 class="font-semibold text-yellow-800 text-xs md:text-sm">AI Services (RAG+LLM)</h3>
-                        <p class="text-xs text-yellow-600 mt-1">Smart curation, recommendation engine</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Key Metrics -->
-        <section class="mb-6 md:mb-12 fade-in">
-            <div class="glass-effect rounded-lg md:rounded-xl p-3 md:p-6">
-                <h2 class="text-lg md:text-2xl font-bold mb-4 md:mb-6 text-gray-800">
-                    📈 Target Pencapaian 2030
+                <h2 class="text-lg md:text-2xl font-bold mb-4 md:mb-6 text-gray-800 text-center">
+                    🎯 Target Pencapaian Indonesia Emas 2045
                 </h2>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6">
-                    <div class="text-center">
+                    <div class="text-center bg-blue-50 p-3 md:p-4 rounded-lg">
                         <div class="text-2xl md:text-4xl font-bold text-blue-600">100+</div>
-                        <div class="text-xs md:text-sm text-gray-600">Use Cases Operasional</div>
+                        <div class="text-xs md:text-sm text-blue-800 font-medium">Use Cases Operasional</div>
+                        <div class="text-xs text-blue-600">by 2030</div>
                     </div>
-                    <div class="text-center">
+                    <div class="text-center bg-green-50 p-3 md:p-4 rounded-lg">
                         <div class="text-2xl md:text-4xl font-bold text-green-600">95%</div>
-                        <div class="text-xs md:text-sm text-gray-600">Interoperabilitas Sistem</div>
+                        <div class="text-xs md:text-sm text-green-800 font-medium">Interoperabilitas</div>
+                        <div class="text-xs text-green-600">Cross-sector integration</div>
                     </div>
-                    <div class="text-center">
-                        <div class="text-2xl md:text-4xl font-bold text-purple-600">90%</div>
-                        <div class="text-xs md:text-sm text-gray-600">Layanan AI-enabled</div>
+                    <div class="text-center bg-purple-50 p-3 md:p-4 rounded-lg">
+                        <div class="text-2xl md:text-4xl font-bold text-purple-600">Top 15</div>
+                        <div class="text-xs md:text-sm text-purple-800 font-medium">Global AI Ranking</div>
+                        <div class="text-xs text-purple-600">Digital Government Index</div>
                     </div>
-                    <div class="text-center">
-                        <div class="text-2xl md:text-4xl font-bold text-orange-600">Top 20</div>
-                        <div class="text-xs md:text-sm text-gray-600">Global AI Ranking</div>
+                    <div class="text-center bg-orange-50 p-3 md:p-4 rounded-lg">
+                        <div class="text-2xl md:text-4xl font-bold text-orange-600">3%</div>
+                        <div class="text-xs md:text-sm text-orange-800 font-medium">GDP Contribution</div>
+                        <div class="text-xs text-orange-600">AI ecosystem impact</div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-4 md:py-6">
-        <div class="container mx-auto px-3 md:px-6 text-center">
-            <p class="text-xs md:text-sm">
-                🇮🇩 Pokja Use Case - Peta Jalan Kecerdasan Artifisial Indonesia 2025-2045
-            </p>
-            <p class="text-xs text-gray-400 mt-1">
-                Menuju Indonesia Emas melalui transformasi digital yang inklusif dan berkelanjutan
-            </p>
-        </div>
-    </footer>
-
-    <script>
-        // Mobile-first optimizations
-        const isMobile = window.innerWidth < 768;
-        
-        // Add smooth scroll behavior
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Add intersection observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
-        // Observe all fade-in elements
-        document.querySelectorAll('.fade-in').forEach(el => {
+            </div
