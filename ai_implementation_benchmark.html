@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matriks Perbandingan Kerangka Kerja Implementasi AI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .matrix-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            overflow-x: auto;
+        }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .matrix-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+            font-weight: 700;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            border-bottom: 3px solid #5a67d8;
+        }
+
+        .matrix-table th:first-child {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            text-align: left;
+            min-width: 200px;
+        }
+
+        .matrix-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+            vertical-align: top;
+        }
+
+        .matrix-table td:first-child {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            font-weight: 600;
+            color: #2c3e50;
+            border-right: 3px solid #667eea;
+        }
+
+        .matrix-table tr:hover td {
+            background-color: #f8f9ff;
+            transform: scale(1.01);
+        }
+
+        .country-estonia { background: linear-gradient(135deg, #00a8cc, #0077be); }
+        .country-singapore { background: linear-gradient(135deg, #ee2737, #d32f2f); }
+        .country-uae { background: linear-gradient(135deg, #009639, #00796b); }
+        .country-eu { background: linear-gradient(135deg, #003399, #1976d2); }
+        .country-uk { background: linear-gradient(135deg, #c8102e, #d32f2f); }
+        .country-canada { background: linear-gradient(135deg, #ff0000, #d32f2f); }
+
+        .matrix-table th.country-header {
+            color: white;
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .matrix-table th.country-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .matrix-table th.country-header:hover::before {
+            opacity: 1;
+        }
+
+        .highlight-cell {
+            position: relative;
+        }
+
+        .highlight-cell::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 40%, rgba(102, 126, 234, 0.1) 50%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .highlight-cell:hover::after {
+            opacity: 1;
+        }
+
+        .metric-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            margin: 2px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            color: #7f8c8d;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .matrix-table {
+                font-size: 12px;
+            }
+            
+            .matrix-table th,
+            .matrix-table td {
+                padding: 10px 8px;
+            }
+        }
+
+        .animation-fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header animation-fade-in">
+            <h1>🚀 Matriks Perbandingan Kerangka Kerja Implementasi AI</h1>
+            <p>Analisis komprehensif kerangka kerja kecerdasan buatan dari enam negara terdepan: Estonia, Singapura, UEA, Uni Eropa, Inggris, dan Kanada</p>
+        </div>
+
+        <div class="matrix-container animation-fade-in">
+            <table class="matrix-table">
+                <thead>
+                    <tr>
+                        <th>Elemen Kerangka Kerja</th>
+                        <th class="country-header country-estonia">🇪🇪 Estonia</th>
+                        <th class="country-header country-singapore">🇸🇬 Singapura</th>
+                        <th class="country-header country-uae">🇦🇪 UEA</th>
+                        <th class="country-header country-eu">🇪🇺 Uni Eropa</th>
+                        <th class="country-header country-uk">🇬🇧 Inggris</th>
+                        <th class="country-header country-canada">🇨🇦 Kanada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>🏛️ Model Tata Kelola</strong></td>
+                        <td class="highlight-cell">Desentralisasi dengan pendekatan digital-pertama</td>
+                        <td class="highlight-cell">Koordinasi terpusat Smart Nation</td>
+                        <td class="highlight-cell">Kepemimpinan tingkat menteri AI</td>
+                        <td class="highlight-cell">Harmonisasi regulasi</td>
+                        <td class="highlight-cell">Pendekatan sektoral</td>
+                        <td class="highlight-cell">Koordinasi federal-provinsi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>👥 Kepemimpinan Utama</strong></td>
+                        <td class="highlight-cell">Akademi e-Governance</td>
+                        <td class="highlight-cell">Smart Nation & Digital Government Office</td>
+                        <td class="highlight-cell">Menteri Negara bidang AI</td>
+                        <td class="highlight-cell">Komisi Eropa</td>
+                        <td class="highlight-cell">Office for AI</td>
+                        <td class="highlight-cell">Innovation, Science & Economic Development</td>
+                    </tr>
+                    <tr>
+                        <td><strong>💰 Skala Investasi</strong></td>
+                        <td class="highlight-cell">Terintegrasi dalam transformasi digital</td>
+                        <td class="highlight-cell"><span class="metric-badge">S$1+ miliar</span> (5 tahun)</td>
+                        <td class="highlight-cell"><span class="metric-badge">AED 335 miliar</span> target 2031</td>
+                        <td class="highlight-cell"><span class="metric-badge">€1,5 miliar</span> (Horizon Europe)</td>
+                        <td class="highlight-cell"><span class="metric-badge">£2,5 miliar</span> sektor AI</td>
+                        <td class="highlight-cell"><span class="metric-badge">CAD $2,4 miliar</span> (2024)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🎯 Fokus Strategis</strong></td>
+                        <td class="highlight-cell">Masyarakat digital & layanan elektronik</td>
+                        <td class="highlight-cell">Transformasi ekonomi</td>
+                        <td class="highlight-cell">Kepemimpinan AI global</td>
+                        <td class="highlight-cell">Regulasi AI yang etis</td>
+                        <td class="highlight-cell">Inovasi & keamanan</td>
+                        <td class="highlight-cell">Infrastruktur komputasi</td>
+                    </tr>
+                    <tr>
+                        <td><strong>⚡ Pendekatan Implementasi</strong></td>
+                        <td class="highlight-cell">Prinsip "sekali saja"</td>
+                        <td class="highlight-cell">Peluncuran nasional bertahap</td>
+                        <td class="highlight-cell">Penerapan spesifik sektor</td>
+                        <td class="highlight-cell">Regulasi berbasis risiko</td>
+                        <td class="highlight-cell">Pengujian sandbox</td>
+                        <td class="highlight-cell">Kemitraan publik-swasta</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🛡️ Manajemen Risiko</strong></td>
+                        <td class="highlight-cell">Infrastruktur keamanan X-Road</td>
+                        <td class="highlight-cell">Kerangka pengujian AI Verify</td>
+                        <td class="highlight-cell">Panduan Etika AI</td>
+                        <td class="highlight-cell">Kepatuhan AI Act</td>
+                        <td class="highlight-cell">Peta jalan AI Assurance</td>
+                        <td class="highlight-cell">Penilaian Dampak Algoritma</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📱 Cakupan Layanan Digital</strong></td>
+                        <td class="highlight-cell"><span class="metric-badge">99% layanan publik</span> daring</td>
+                        <td class="highlight-cell">Layanan kota pintar komprehensif</td>
+                        <td class="highlight-cell">Fokus sektor prioritas</td>
+                        <td class="highlight-cell">Interoperabilitas lintas batas</td>
+                        <td class="highlight-cell">Layanan Digital Pemerintah</td>
+                        <td class="highlight-cell">Digitalisasi layanan federal</td>
+                    </tr>
+                    <tr>
+                        <td><strong>👨‍👩‍👧‍👦 Keterlibatan Warga</strong></td>
+                        <td class="highlight-cell">Program e-Residency</td>
+                        <td class="highlight-cell">Inisiatif inklusi digital</td>
+                        <td class="highlight-cell">Merek UAI & kesadaran publik</td>
+                        <td class="highlight-cell">GDPR & hak digital</td>
+                        <td class="highlight-cell">Kerangka hak digital</td>
+                        <td class="highlight-cell">Desain berpusat pada warga</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🚀 Ekosistem Inovasi</strong></td>
+                        <td class="highlight-cell">Kebijakan ramah startup</td>
+                        <td class="highlight-cell">Program nasional AI Singapore</td>
+                        <td class="highlight-cell">Institut penelitian AI</td>
+                        <td class="highlight-cell">Hub inovasi</td>
+                        <td class="highlight-cell">Dewan AI & kemitraan</td>
+                        <td class="highlight-cell">Pendanaan penelitian AI</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🌍 Posisi Internasional</strong></td>
+                        <td class="highlight-cell">Pelopor pemerintahan digital</td>
+                        <td class="highlight-cell">Pemimpin AI ASEAN</td>
+                        <td class="highlight-cell">Destinasi AI global</td>
+                        <td class="highlight-cell">Standar regulasi global</td>
+                        <td class="highlight-cell">Advokat AI bertanggung jawab</td>
+                        <td class="highlight-cell">Kepemimpinan keamanan AI</td>
+                    </tr>
+                    <tr>
+                        <td><strong>📊 Metrik Keberhasilan Utama</strong></td>
+                        <td class="highlight-cell"><span class="metric-badge">99% digitalisasi</span>, <span class="metric-badge">2% penghematan PDB</span></td>
+                        <td class="highlight-cell"><span class="metric-badge">15.000 praktisi AI</span> pada 2029</td>
+                        <td class="highlight-cell"><span class="metric-badge">20% PDB non-minyak</span> dari AI pada 2031</td>
+                        <td class="highlight-cell">Regulasi AI yang harmonis</td>
+                        <td class="highlight-cell"><span class="metric-badge">£232 miliar kontribusi AI</span> pada 2030</td>
+                        <td class="highlight-cell"><span class="metric-badge">140.000+ profesional AI</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>📋 Kerangka Regulasi</strong></td>
+                        <td class="highlight-cell">Perlindungan data & keamanan siber</td>
+                        <td class="highlight-cell">Model Kerangka Tata Kelola AI</td>
+                        <td class="highlight-cell">Panduan Etika AI Nasional</td>
+                        <td class="highlight-cell">AI Act (komprehensif)</td>
+                        <td class="highlight-cell">White Paper AI & aturan sektoral</td>
+                        <td class="highlight-cell">Artificial Intelligence & Data Act</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🖥️ Infrastruktur Teknologi</strong></td>
+                        <td class="highlight-cell">Platform X-Road</td>
+                        <td class="highlight-cell">Akses komputasi berkinerja tinggi</td>
+                        <td class="highlight-cell">Infrastruktur AI berdaulat</td>
+                        <td class="highlight-cell">Pasar Tunggal Digital</td>
+                        <td class="highlight-cell">Sumber Daya Penelitian AI Nasional</td>
+                        <td class="highlight-cell">Strategi komputasi berdaulat</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🎓 Pengembangan Talenta</strong></td>
+                        <td class="highlight-cell">Integrasi keterampilan digital</td>
+                        <td class="highlight-cell">Program pendidikan & pelatihan AI</td>
+                        <td class="highlight-cell">Inisiatif 1 Juta Talenta AI</td>
+                        <td class="highlight-cell">Agenda keterampilan AI Eropa</td>
+                        <td class="highlight-cell">Kursus konversi AI & Data Science</td>
+                        <td class="highlight-cell">Beasiswa AI & pendanaan penelitian</td>
+                    </tr>
+                    <tr>
+                        <td><strong>⏰ Garis Waktu</strong></td>
+                        <td class="highlight-cell">Berlangsung sejak 2001</td>
+                        <td class="highlight-cell">Smart Nation 2.0 (diluncurkan 2023)</td>
+                        <td class="highlight-cell">Strategi AI 2031</td>
+                        <td class="highlight-cell">Implementasi AI Act 2024-2027</td>
+                        <td class="highlight-cell">Strategi AI 10 tahun</td>
+                        <td class="highlight-cell">Rencana implementasi 5 tahun</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer animation-fade-in">
+            <p>🔬 <strong>Analisis Komparatif Kerangka Kerja AI Global</strong> | Sumber data dari berbagai laporan pemerintah dan publikasi resmi 2024-2025</p>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling and hover effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const cells = document.querySelectorAll('.highlight-cell');
+            
+            cells.forEach(cell => {
+                cell.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.zIndex = '2';
+                });
+                
+                cell.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                    this.style.zIndex = '1';
+                });
+            });
+
+            // Add fade-in animation for elements
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            document.querySelectorAll('.animation-fade-in').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
