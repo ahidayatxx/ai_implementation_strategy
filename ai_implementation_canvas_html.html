@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Implementation Canvas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .canvas-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .canvas-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .canvas-title {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .canvas-subtitle {
+            font-size: 1.1em;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+
+        .canvas-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            gap: 15px;
+            min-height: 600px;
+        }
+
+        .canvas-block {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .canvas-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .block-header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 15px;
+            margin: -20px -20px 15px -20px;
+            font-weight: 600;
+            font-size: 1.1em;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .framework-tag {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 500;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        .block-content {
+            font-size: 0.9em;
+            line-height: 1.5;
+            color: #495057;
+        }
+
+        .block-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .block-list li {
+            padding: 3px 0;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .block-list li:before {
+            content: "→";
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .stda-section {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #667eea;
+        }
+
+        .stda-phase {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .legend {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+        }
+
+        .legend-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .legend-item {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .legend-framework {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .legend-validation {
+            font-size: 0.85em;
+            color: #6c757d;
+        }
+
+        @media (max-width: 1200px) {
+            .canvas-grid {
+                grid-template-columns: repeat(3, 1fr);
+                grid-template-rows: repeat(4, auto);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .canvas-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .canvas-title {
+                font-size: 2em;
+            }
+            
+            .canvas-container {
+                padding: 20px;
+            }
+        }
+
+        .interactive-tooltip {
+            position: absolute;
+            background: #2c3e50;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.8em;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 1000;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .canvas-block:hover .interactive-tooltip {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="canvas-container">
+        <div class="canvas-header">
+            <h1 class="canvas-title">AI Implementation Canvas</h1>
+            <p class="canvas-subtitle">Berdasarkan 5 Kerangka Kerja Paling Substansial untuk Implementasi AI yang Berhasil</p>
+        </div>
+
+        <div class="canvas-grid">
+            <!-- Block 1: AI Problem Definition -->
+            <div class="canvas-block">
+                <div class="interactive-tooltip">Mulai di sini - Analisis akar masalah</div>
+                <div class="block-header">AI PROBLEM DEFINITION</div>
+                <div class="framework-tag">5 Why + Fishbone</div>
+                <div class="block-content">
+                    <ul class="block-list">
+                        <li>Core Problem</li>
+                        <li>Root Causes</li>
+                        <li>Success Metrics</li>
+                        <li>Assumptions</li>
+                        <li>Constraints</li>
+                        <li>Problem Scope</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Block 2: Stakeholder Ecosystem -->
+            <div class="canvas-block">
+                <div class="interactive-tooltip">Siapa yang terlibat dan berpengaruh</div>
+                <div class="block-header">STAKEHOLDER ECOSYSTEM</div>
+                <div class="framework-tag">Stakeholder Management</div>
+                <div class="block-content">
+                    <ul class="block-list">
+                        <li>Key Stakeholders</li>
+                        <li>Power/Interest Matrix</li>
+                        <li>Influence Mapping</li>
+                        <li>Communication Strategy</li>
+                        <li>Resistance Points</li>
+                        <li>Change Management</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Block 3: Value Proposition -->
+            <div class="canvas-block">
+                <div class="interactive-tooltip">56,879+ kutipan akademis</div>
+                <div class="block-header">VALUE PROPOSITION</div>
+                <div class="framework-tag">Value Prop Framework</div>
+                <div class="block-content">
+                    <ul class="block-list">
+                        <li>Customer Value</li>
+                        <li>Business Value</li>
+                        <li>Competitive Edge</li>
+                        <li>User Experience</li>
+                        <li>Measurable Gains</li>
+                        <li>Value Timeline</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Block 4: Data & Infrastructure -->
+            <div class="canvas-block">
+                <div class="interactive-tooltip">Foundation teknis - IoT + Edge Computing</div>
+                <div class="block-header">DATA & INFRASTRUCTURE</div>
+                <div class="framework-tag">IoT + Edge Computing</div>
+                <div class="block-content">
+                    <ul class="block-list">
+                        <li>Data Sources</li>
+                        <li>Data Quality</li>
+                        <li>Infrastructure</li>
+                        <li>Integration APIs</li>
+                        <li>Security</li>
+                        <li>Scalability</li>
+                        <li>Real-time Needs</li>
+                        <li>Edge vs Cloud</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Block 5: Technical Architecture -->
+            <div class="canvas-block">
+                <div class="interactive-tooltip">STDA Framework + LSTM/ML</div>
+                <div class="block-header">TECHNICAL ARCHITECTURE</div>
+                <div class="framework-tag">STDA + LSTM/ML</div>
+                <div class="block-content">
+                    <div class="stda-section">
+                        <div class="stda-phase">SENSE:</div>
+                        <div>Data Sources, Sensors/IoT</div>
+                    </div>
+                    <div class="stda-section">
+                        <div class="stda-phase">THINK:</div>
+                        <div>ML Models, Algorithms</div>
+                    </div>
+                    <div class="stda-section">
+                        <div class="stda-phase">DECIDE:</div>
+                        <div>Decision Logic</div>
+                    </div>
+                    <div class="stda-section">
+                        <div class="stda-phase">ACT:</div>
+                        <div>Automation, Feedback</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block 6: Risk & Uncertainty -->
+            <div class="canvas-block">
+                <div class="interactive-tooltip">Identifikasi risiko sebelum implementasi</div>
+                <div class="block-header">RISK & UNCERTAINTY</div>
+                <div class="framework-tag">Monte Carlo Simulation</div>
+                <div class="block-content">
+                    <ul class="block-list">
+                        <li>Technical Risks</li>
+                        <li>Business Risks</li>
+                        <li>Ethical Risks</li>
+                        <li>Uncertainty Quantification</li>
+                        <li>Scenario Planning</li>
+                        <li>Contingency Plans</li>
+                        <li>Risk Mitigation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Block 7: Governance & Compliance -->
+            <div class="canvas-block">
+                <div class="interactive-tooltip">Framework tata kelola dan kepatuhan</div>
+                <div class="block-header">GOVERNANCE & COMPLIANCE</div>
+                <div class="framework-tag">Regulatory Compliance</div>
+                <div class="block-content">
+                    <ul class="block-list">
+                        <li>Legal Framework</li>
+                        <li>Data Privacy</li>
+                        <li>AI Ethics</li>
+                        <li>Audit Trail</li>
+                        <li>Transparency</li>
+                        <li>Accountability</li>
+                        <li>Standards</li>
+                        <li>Certification</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Block 8: Implementation Roadmap -->
+            <div class="canvas-block">
+                <div class="interactive-tooltip">Rencana deployment bertahap</div>
+                <div class="block-header">IMPLEMENTATION ROADMAP</div>
+                <div class="framework-tag">Project Management</div>
+                <div class="block-content">
+                    <ul class="block-list">
+                        <li>Phase 1: Pilot</li>
+                        <li>Phase 2: Scale</li>
+                        <li>Phase 3: Expand</li>
+                        <li>Timeline</li>
+                        <li>Resources</li>
+                        <li>Dependencies</li>
+                        <li>Milestones</li>
+                        <li>Budget Allocation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Block 9: Business Impact -->
+            <div class="canvas-block">
+                <div class="interactive-tooltip">ROI 3.5X rata-rata untuk investasi AI</div>
+                <div class="block-header">BUSINESS IMPACT</div>
+                <div class="framework-tag">ROI + Triple Bottom Line</div>
+                <div class="block-content">
+                    <ul class="block-list">
+                        <li>Cost Structure</li>
+                        <li>Revenue Model</li>
+                        <li>ROI Projection</li>
+                        <li>Ethical Impact</li>
+                        <li>Social Impact</li>
+                        <li>Environmental Impact</li>
+                        <li>Risk Assessment</li>
+                        <li>Success KPIs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Block 10: Continuous Improvement -->
+            <div class="canvas-block">
+                <div class="interactive-tooltip">Siklus pembelajaran berkelanjutan</div>
+                <div class="block-header">CONTINUOUS IMPROVEMENT</div>
+                <div class="framework-tag">Learning Loop</div>
+                <div class="block-content">
+                    <ul class="block-list">
+                        <li>Performance Monitoring</li>
+                        <li>Model Updates</li>
+                        <li>Stakeholder Feedback</li>
+                        <li>Knowledge Management</li>
+                        <li>Innovation Cycle</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Legend Section -->
+        <div class="legend">
+            <h3 class="legend-title">Framework Integration Matrix</h3>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-framework">STDA Framework</div>
+                    <div class="legend-validation">40+ tahun penelitian arsitektur kognitif</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-framework">Stakeholder Management</div>
+                    <div class="legend-validation">44 studi implementasi AI</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-framework">ROI Analysis</div>
+                    <div class="legend-validation">ROI rata-rata 3.5X untuk investasi AI</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-framework">LSTM/ML Technical</div>
+                    <div class="legend-validation">15-30% lebih akurat dari metode tradisional</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-framework">Value Proposition</div>
+                    <div class="legend-validation">56,879+ kutipan akademis</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-framework">Monte Carlo Simulation</div>
+                    <div class="legend-validation">25-40% peningkatan akurasi prediksi risiko</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add interactive functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const blocks = document.querySelectorAll('.canvas-block');
+            
+            blocks.forEach(block => {
+                block.addEventListener('click', function() {
+                    const framework = this.querySelector('.framework-tag').textContent;
+                    const header = this.querySelector('.block-header').textContent;
+                    
+                    alert(`Framework: ${framework}\nBlok: ${header}\n\nKlik pada setiap blok untuk mengisi detail implementasi AI Anda.`);
+                });
+            });
+
+            // Add print functionality
+            const printButton = document.createElement('button');
+            printButton.textContent = 'Print Canvas';
+            printButton.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: #667eea;
+                color: white;
+                border: none;
+                padding: 12px 20px;
+                border-radius: 25px;
+                cursor: pointer;
+                font-weight: 600;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                z-index: 1000;
+            `;
+            
+            printButton.addEventListener('click', function() {
+                window.print();
+            });
+            
+            document.body.appendChild(printButton);
+        });
+    </script>
+</body>
+</html>
